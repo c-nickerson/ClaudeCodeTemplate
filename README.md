@@ -16,6 +16,8 @@ ClaudeCodeTemplate/
 ├── docs/
 │   └── learning-log.md  # Step-by-step journal: WHAT we did and WHY
 └── template/            # The drop-in payload: copy its contents into a new project
+    ├── .claude/
+    │   └── settings.json  # Shared Claude Code settings: what Claude may/can't do
     ├── .gitignore       # Files Git should ignore (secrets, clutter, builds)
     ├── .env.example     # List of settings/secrets the project needs (no real values)
     ├── .editorconfig    # Shared basic formatting rules for all editors

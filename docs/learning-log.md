@@ -211,3 +211,45 @@ to copy hidden files.
 
 ### Next
 `.claude/settings.json` — shared Claude Code settings (permissions).
+
+---
+
+## Step 5 — Shared Claude Code settings
+
+**Date:** 2026-10-29
+
+### What
+Added `template/.claude/settings.json` with three permission lists:
+
+- **allow** — read-only Git commands (`git status`, `diff`, `log`, `branch`, `show`).
+  Claude runs these without asking.
+- **ask** — `git push`. Claude must always ask first.
+- **deny** — reading real secret files (`.env`, `.env.local`, `.env.development`,
+  `.env.production`, `secrets/`). Claude can never read these.
+
+### Why
+- **Fewer interruptions:** by default Claude asks before running commands. Safe,
+  read-only commands don't need that, so we pre-approve them.
+- **Safety where it matters:** pushing changes something outside your computer, so it
+  always asks. Secrets should never end up in a chat, so reading them is blocked.
+- **Shared vs. personal:** `.claude/settings.json` is committed, so everyone on the
+  project gets the same rules. Personal tweaks go in `.claude/settings.local.json`,
+  which Step 4's `.gitignore` already ignores.
+- **`$schema` line:** lets editors autocomplete and check the file.
+- **Language-agnostic:** only Git commands, which every project uses. Each project
+  should add its own test/lint commands (e.g. `Bash(npm test)`) once it has them.
+
+**Order of rules:** `deny` beats `ask`, which beats `allow`.
+
+### Alternatives considered
+- **Denying `./.env.*`** with a wildcard. Rejected: it would also block
+  `.env.example`, which Claude needs to read and update. So the real secret file
+  names are listed one by one.
+- **Allowing more commands** (e.g. `git commit`, file deletes). Left as "ask" (the
+  default) — those change things, so a human should confirm while learning.
+- **Hooks** (scripts that run automatically on events). Powerful but more advanced —
+  a good later step.
+
+### Next
+A Node.js script, `scripts/new-project.mjs`, that copies `template/` into a new
+folder for you.
