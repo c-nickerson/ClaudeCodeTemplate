@@ -40,15 +40,22 @@ Status: ✅ done · 🔄 in progress · ⬜ not started
 - ✅ Step 4: `.gitignore`, `.env.example`, `.editorconfig`
 - ✅ Step 5: `.claude/settings.json` permissions
 
-### Phase 2 — Claude Code setup 🔄
+### Phase 2 — Claude Code setup ✅
 - ✅ Step 6: Claude setup for this repo
 - ✅ Step 7: Split rules (`CLAUDE.md`) from memory (`.claude/memory/PROJECT.md`)
 - ✅ Step 8: `/wrap-up` command (as a skill)
 - ✅ Step 9: SessionStart hook (git snapshot) + ask before editing `CLAUDE.md`
 
+### Phase 3 — Test and extend ⬜
+- ⬜ Check in a fresh session: hook snapshot appears, `/wrap-up` is listed
+- ⬜ Try the template on a real new project
+- ⬜ More skills (e.g. `/new-step`)
+- ⬜ `docs/decisions/` habit in the template
+- ⬜ Language-specific variants (e.g. Node, Python)
+
 ## Current focus / Next up
-- Try `/wrap-up` at the end of a session.
-- Pick next step (ideas: more skills, a `docs/decisions/` habit, language variants).
+- Start of next session: check the git snapshot hook ran and `/wrap-up` shows in the `/` menu.
+- Then pick a Phase 3 item with the user.
 
 ## Decisions
 - `template/` holds the payload so learning docs never get copied.
@@ -60,4 +67,5 @@ Status: ✅ done · 🔄 in progress · ⬜ not started
 - Hook commands in the template are inline shell, not Node scripts, so new projects don't need Node.
 
 ## Open questions
-- None right now.
+- Which Phase 3 item comes first?
+- The hook and the `CLAUDE.md` "ask" rule haven't been checked in a live session yet.
