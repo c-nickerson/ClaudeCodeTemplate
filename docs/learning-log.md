@@ -289,3 +289,58 @@ folder for you.
 ### Next
 Ideas: custom slash commands or skills (in both this repo and the template), or
 hooks (automatic actions on events).
+
+---
+
+## Step 7 — Split rules from memory
+
+**Date:** 2026-10-29
+
+### What
+In both this repo and the template:
+
+- `CLAUDE.md` is now **only instructions** — how Claude should work. Marked "do not
+  edit unless the user asks".
+- New `.claude/memory/PROJECT.md` holds **project facts** — overview, goals,
+  requirements, tech stack, commands, plan (✅ 🔄 ⬜), current focus, decisions,
+  open questions.
+- `CLAUDE.md` loads it with the line `@.claude/memory/PROJECT.md`.
+- `CLAUDE.md` has a "Wrapping up a session" routine telling Claude to update
+  `PROJECT.md`.
+- Both `settings.json` files now allow `Edit(./.claude/memory/**)` so Claude can
+  update memory without asking each time.
+- The template's project `TODO`s (project, tech stack, commands) moved from
+  `CLAUDE.md` into `PROJECT.md`.
+- `README.md` got usage steps and a "two kinds of Claude files" table.
+
+### Why
+- **Things that change at different speeds belong in different files.** Rules
+  (how to work) are stable; project state (what's done, what's next) changes every
+  session. Mixing them means the rulebook gets edited constantly and slowly drifts.
+- **Clear ownership:** the user owns `CLAUDE.md`; Claude maintains `PROJECT.md`.
+  That stops Claude quietly rewriting its own rules.
+- **The `@` import is the key trick.** Claude Code only auto-loads `CLAUDE.md`. A
+  file in `.claude/memory/` would be ignored unless something points to it. An
+  `@path` line in `CLAUDE.md` pulls that file's contents in at the start of every
+  session, so the memory is always seen.
+- **Snapshot, not diary:** `PROJECT.md` is told to replace old info, so it stays
+  short. The *history* already lives in git and (here) in this learning log.
+- **Wrap-up routine** gives the next session a clean starting point
+  ("Current focus / Next up").
+
+### Learning log vs. PROJECT.md (this repo)
+- `docs/learning-log.md` — the **story**: every step, why, alternatives. Only grows.
+- `.claude/memory/PROJECT.md` — the **status board**: where we are now. Gets rewritten.
+
+### Alternatives considered
+- **Keep everything in `CLAUDE.md`.** Simple, but mixes stable rules with changing
+  state — exactly what we wanted to avoid.
+- **Claude Code's built-in auto memory** (notes Claude keeps on its own). It's
+  personal to one machine and not shared via git, so it can't be part of a template.
+- **Reading `PROJECT.md` via an instruction** ("read this file first") instead of
+  `@` import. Less reliable — Claude might skip it. The import guarantees it's loaded.
+- **Splitting memory into several files** (goals.md, plan.md…). More to manage;
+  one file is enough for now. The `memory/` folder leaves room to grow.
+
+### Next
+A `/wrap-up` slash command to run the wrap-up routine in one go, or hooks.
