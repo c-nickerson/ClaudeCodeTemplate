@@ -43,17 +43,19 @@ Status: ✅ done · 🔄 in progress · ⬜ not started
 ### Phase 2 — Claude Code setup 🔄
 - ✅ Step 6: Claude setup for this repo
 - ✅ Step 7: Split rules (`CLAUDE.md`) from memory (`.claude/memory/PROJECT.md`)
-- ⬜ Custom slash commands (e.g. `/wrap-up`)
+- ✅ Step 8: `/wrap-up` command (as a skill)
 - ⬜ Hooks
 
 ## Current focus / Next up
-- Pick next: custom slash commands or hooks.
+- Try `/wrap-up` at the end of a session.
+- Pick next: hooks, or more commands/skills.
 
 ## Decisions
 - `template/` holds the payload so learning docs never get copied.
 - Template is language-agnostic; language specifics go in each project's `PROJECT.md`.
 - No copy script — one `cp` command is enough.
 - `CLAUDE.md` is the stable rulebook; `PROJECT.md` is the living memory, loaded via `@` import.
+- Custom commands are skills (`.claude/skills/<name>/SKILL.md`), the current Claude Code format.
 
 ## Open questions
 - None right now.

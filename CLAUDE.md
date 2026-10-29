@@ -19,6 +19,7 @@ it says what we're building, the plan, and what's next.
   template*. Don't mix them up.
 - `docs/learning-log.md` — the story: What / Why / Alternatives for every step.
 - `.claude/memory/PROJECT.md` — the snapshot: where the project is *now*.
+- `.claude/skills/` — custom slash commands (e.g. `/wrap-up`).
 
 ## How a step works
 1. Agree the step with the user before changing files.
@@ -31,9 +32,8 @@ it says what we're building, the plan, and what's next.
 7. Reply to the user with a short ELI5 summary and suggest the next step.
 
 ## Wrapping up a session
-When the user says "wrap up", make sure `.claude/memory/PROJECT.md` is current:
-statuses (✅ 🔄 ⬜), decisions, "Next up", and "Last updated". Replace old info
-rather than appending. Commit and push.
+When the user runs `/wrap-up` or says "wrap up", follow the `wrap-up` skill
+(`.claude/skills/wrap-up/SKILL.md`).
 
 ## Rules
 - Scripts for this repo are Node.js (plain `.mjs`, built-in modules only unless

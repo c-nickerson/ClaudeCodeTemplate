@@ -15,16 +15,22 @@ ClaudeCodeTemplate/
 ├── CLAUDE.md            # Rulebook for Claude in THIS repo (rarely edited)
 ├── .claude/
 │   ├── settings.json    # Claude Code permissions for THIS repo
-│   └── memory/
-│       └── PROJECT.md   # Living memory: goals, plan, progress (Claude updates it)
+│   ├── memory/
+│   │   └── PROJECT.md   # Living memory: goals, plan, progress (Claude updates it)
+│   └── skills/
+│       └── wrap-up/
+│           └── SKILL.md # The /wrap-up command for THIS repo
 ├── .gitignore           # Files Git ignores in THIS repo
 ├── docs/
 │   └── learning-log.md  # Step-by-step journal: WHAT we did and WHY
 └── template/            # The drop-in payload: copy its contents into a new project
     ├── .claude/
     │   ├── settings.json  # Shared Claude Code settings: what Claude may/can't do
-    │   └── memory/
-    │       └── PROJECT.md # Fill-in memory: goals, plan, progress
+    │   ├── memory/
+    │   │   └── PROJECT.md # Fill-in memory: goals, plan, progress
+    │   └── skills/
+    │       └── wrap-up/
+    │           └── SKILL.md # /wrap-up: updates PROJECT.md at the end of a session
     ├── .gitignore       # Files Git should ignore (secrets, clutter, builds)
     ├── .env.example     # List of settings/secrets the project needs (no real values)
     ├── .editorconfig    # Shared basic formatting rules for all editors
@@ -60,4 +66,4 @@ cp -r template/. /path/to/new-project/
 | File | What it is | Who changes it | How often |
 |---|---|---|---|
 | `CLAUDE.md` | Rulebook: *how* Claude works | You (or Claude, only when you ask) | Rarely |
-| `.claude/memory/PROJECT.md` | Memory: *what* the project is and where it's at | Claude, when wrapping up | Every session |
+| `.claude/memory/PROJECT.md` | Memory: *what* the project is and where it's at | Claude, when you run `/wrap-up` | Every session |

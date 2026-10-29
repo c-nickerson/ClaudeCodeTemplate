@@ -344,3 +344,43 @@ In both this repo and the template:
 
 ### Next
 A `/wrap-up` slash command to run the wrap-up routine in one go, or hooks.
+
+---
+
+## Step 8 — The `/wrap-up` command
+
+**Date:** 2026-10-29
+
+### What
+- Added `template/.claude/skills/wrap-up/SKILL.md` — typing `/wrap-up` makes
+  Claude review the session (chat + `git status`/`git log`), update
+  `.claude/memory/PROJECT.md`, and reply with Done / Next / Open questions.
+  It does **not** commit unless asked.
+- Added `.claude/skills/wrap-up/SKILL.md` for this repo — same idea, plus it
+  checks the learning log has an entry for every step, then commits and pushes.
+- Shortened the "Wrapping up" section of both `CLAUDE.md` files to point at the
+  skill, so the steps are written in one place only.
+- Updated `README.md` tree and `PROJECT.md`.
+
+### Why
+- **One word does the whole routine.** No need to remember the checklist.
+- **A skill, not a plain command file.** Claude Code turns each
+  `.claude/skills/<name>/SKILL.md` into a `/<name>` command. Skills are the
+  current format and can also be used by Claude on its own — the `description`
+  says "use when the user says wrap up", so plain words work too, not just `/wrap-up`.
+- **Steps live in the skill, not `CLAUDE.md`.** `CLAUDE.md` is loaded every
+  session; a skill's full text only loads when it's used. That keeps every
+  session lighter and keeps the rulebook short.
+- **Two versions:** this repo's wrap-up has extra jobs (learning log, commit,
+  push). The template's version is generic, so it doesn't commit on its own —
+  every project handles git differently.
+
+### Alternatives considered
+- **`.claude/commands/wrap-up.md`** — the older way to make slash commands.
+  Still works, but skills are the newer format and do more.
+- **Keep the full checklist in `CLAUDE.md` too.** Two copies would drift apart.
+- **`disable-model-invocation: true`** (only you can trigger it). Left off so
+  saying "wrap up" also works.
+
+### Next
+Hooks (actions that run automatically), or more skills.

@@ -34,11 +34,5 @@ Put new files in the folder that matches. If none fits, ask before creating a ne
 2. Update docs (README, `docs/`) if behaviour, commands, or structure changed.
 
 ## Wrapping up a session
-When the user says "wrap up" (or the work for the session is done), update
-`.claude/memory/PROJECT.md`:
-1. Set phase / task statuses (✅ done, 🔄 in progress, ⬜ not started).
-2. Add any new decisions, requirements or commands.
-3. Rewrite "Current focus / Next up" so the next session can start straight away.
-4. Update the "Last updated" date.
-
-Keep it a snapshot of *now*, not a diary: edit and replace old info, don't just append.
+When the user runs `/wrap-up` or says "wrap up", follow the `wrap-up` skill
+(`.claude/skills/wrap-up/SKILL.md`). It updates `.claude/memory/PROJECT.md`.
