@@ -12,9 +12,11 @@ We are building it **one step at a time**, and recording **what** we did and
 ```
 ClaudeCodeTemplate/
 ├── README.md            # This file: what the project is and how it's organised
+├── CLAUDE.md            # Instructions for Claude Code when working on THIS repo
 ├── docs/
 │   └── learning-log.md  # Step-by-step journal: WHAT we did and WHY
 └── template/            # The drop-in payload: copy its contents into a new project
+    ├── CLAUDE.md        # Starter instructions for Claude Code in a new project
     └── README.md
 ```
 
