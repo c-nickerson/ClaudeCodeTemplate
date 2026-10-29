@@ -18,7 +18,12 @@ TODO: The exact commands to use. Claude will run these, so make them copy-paste 
 - Lint / format: `TODO`
 
 ## Folder structure
-TODO: Fill in as folders are added. One line per folder, saying what belongs there.
+- `src/` — main code.
+- `tests/` — automated tests; mirror the layout of `src/`.
+- `docs/` — longer documentation: guides, design notes, decisions.
+- `scripts/` — developer helper scripts (setup, build, release). Not app code.
+
+Put new files in the folder that matches. If none fits, ask before creating a new top-level folder.
 
 ## Conventions
 - Follow the existing style of the file you are editing.

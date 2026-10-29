@@ -17,7 +17,11 @@ ClaudeCodeTemplate/
 │   └── learning-log.md  # Step-by-step journal: WHAT we did and WHY
 └── template/            # The drop-in payload: copy its contents into a new project
     ├── CLAUDE.md        # Starter instructions for Claude Code in a new project
-    └── README.md
+    ├── README.md
+    ├── src/             # Main code
+    ├── tests/           # Automated tests
+    ├── docs/            # Longer documentation
+    └── scripts/         # Developer helper scripts
 ```
 
 The key split is:

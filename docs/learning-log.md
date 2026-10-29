@@ -136,3 +136,40 @@ Added a "Talking to the user" section to the root `CLAUDE.md`: ELI5, short repli
 ### Why
 Chat should be quick to read. The full reasoning lives here in the log instead.
 Putting it in `CLAUDE.md` means every future session follows it automatically.
+
+---
+
+## Step 3 — Standard folder layout
+
+**Date:** 2026-10-29
+
+### What
+Added four folders to `template/`, each with a short `README.md`:
+
+- `src/` — main code
+- `tests/` — automated tests (mirror `src/`)
+- `docs/` — longer documentation
+- `scripts/` — developer helper scripts
+
+Filled in the "Folder structure" section of `template/CLAUDE.md` and updated the
+tree in the root `README.md`.
+
+### Why
+- **Same layout every time** — you (and Claude) always know where things go.
+- **These four names are near-universal.** They work for almost any language, so
+  the template stays language-agnostic.
+- **A `README.md` in each folder** because Git doesn't save empty folders. A README
+  keeps the folder *and* says what it's for. (Plain `.gitkeep` files would keep the
+  folder but explain nothing.)
+- **Listed in `CLAUDE.md`** so Claude puts new files in the right place. The "ask
+  before creating a new top-level folder" rule stops the layout from drifting.
+
+### Alternatives considered
+- **More folders** (`config/`, `assets/`, `examples/`, …). Left out: not every
+  project needs them, and empty folders are clutter. Easy to add per project.
+- **Language-specific layouts** (e.g. Python's `src/<package>/`). Too specific for
+  now; could become variants later.
+
+### Next
+Housekeeping files (`.gitignore`, `.env.example`, `.editorconfig`), or
+`.claude/settings.json`.
