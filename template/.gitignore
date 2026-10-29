@@ -1,0 +1,31 @@
+# Files Git should never track. Add language-specific entries as needed.
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Personal Claude Code settings (shared settings in .claude/settings.json ARE tracked)
+.claude/settings.local.json
+
+# OS clutter
+.DS_Store
+Thumbs.db
+
+# Editor clutter
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+
+# Logs and temp files
+*.log
+tmp/
+
+# Common dependency and build folders
+node_modules/
+.venv/
+__pycache__/
+dist/
+build/
+coverage/

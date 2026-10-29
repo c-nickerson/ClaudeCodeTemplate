@@ -173,3 +173,41 @@ tree in the root `README.md`.
 ### Next
 Housekeeping files (`.gitignore`, `.env.example`, `.editorconfig`), or
 `.claude/settings.json`.
+
+---
+
+## Step 4 — Housekeeping files
+
+**Date:** 2026-10-29
+
+### What
+Added three hidden files to `template/`:
+
+- `.gitignore` — files Git should never track.
+- `.env.example` — a list of the settings/secrets a project needs, with no real values.
+- `.editorconfig` — basic formatting rules (indent, line endings) that most editors follow.
+
+Also updated the root `README.md` tree and noted that `cp -r template/.` is needed
+to copy hidden files.
+
+### Why
+- **`.gitignore`** stops secrets (`.env`) and junk (OS files, logs, build output,
+  dependency folders) from being committed. It also ignores
+  `.claude/settings.local.json` — Claude Code's *personal* settings file — while
+  keeping the shared `.claude/settings.json` tracked. That sets up the next step.
+- **`.env.example`** pairs with the ignored `.env`: the real secrets stay local, but
+  everyone can see *which* settings are needed. `CLAUDE.md` already tells Claude to
+  keep it up to date.
+- **`.editorconfig`** prevents noisy diffs from mixed tabs/spaces or Windows vs. Unix
+  line endings. It's language-agnostic and supported by most editors.
+
+### Alternatives considered
+- **A big language-specific `.gitignore`** (e.g. from github/gitignore). Too much for
+  a generic template. We kept a few very common entries (`node_modules/`, `.venv/`,
+  `dist/`…) because they're harmless when unused.
+- **`.gitattributes`** for line endings. Overlaps with `.editorconfig`; skipped to
+  stay simple.
+- **Formatter configs (Prettier, Black…).** Language-specific — left to each project.
+
+### Next
+`.claude/settings.json` — shared Claude Code settings (permissions).
