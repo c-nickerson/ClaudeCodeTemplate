@@ -10,12 +10,25 @@
       "Edit(./.claude/memory/**)"
     ],
     "ask": [
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Edit(./CLAUDE.md)"
     ],
     "deny": [
       "Read(./.env)",
       "Read(./.env.local)",
       "Read(./secrets/**)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '## Git snapshot (SessionStart hook)'; echo \"Branch: $(git branch --show-current 2>/dev/null)\"; echo 'Uncommitted changes:'; git status --short 2>/dev/null | head -20; echo 'Recent commits:'; git log --oneline -5 2>/dev/null; exit 0"
+          }
+        ]
+      }
     ]
   }
 }

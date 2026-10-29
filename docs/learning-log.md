@@ -384,3 +384,50 @@ A `/wrap-up` slash command to run the wrap-up routine in one go, or hooks.
 
 ### Next
 Hooks (actions that run automatically), or more skills.
+
+---
+
+## Step 9 — Hooks (and protecting `CLAUDE.md`)
+
+**Date:** 2026-10-29
+
+### What
+In both `settings.json` files (this repo and the template):
+
+- **A `SessionStart` hook.** When a session starts (or resumes, or after the chat
+  is compacted) it runs a few read-only git commands and prints the current
+  branch, uncommitted changes and last 5 commits. Claude Code adds that output to
+  Claude's context.
+- **`"ask": ["Edit(./CLAUDE.md)"]`.** Claude must get your OK before changing
+  `CLAUDE.md`.
+
+Tested the hook command by hand inside and outside a git repo: it prints the
+snapshot (or blank lines) and always exits cleanly.
+
+### Why
+- **What a hook is:** a command Claude Code runs *by itself* at a set moment
+  (session start, before/after a tool is used, when Claude stops, …). Claude
+  doesn't choose to run it — it always happens.
+- **Why a git snapshot at start:** `PROJECT.md` says what the plan is; git says
+  what actually changed. Together Claude starts every session knowing both,
+  without being asked. It's read-only and works in any language's project.
+- **`exit 0` and `2>/dev/null`:** a hook that errors (e.g. a folder that isn't a git
+  repo yet) shouldn't break or clutter the session.
+- **Inline shell, not a Node script:** the template must work in any project. A
+  Node script would force every project to install Node.
+- **Protecting `CLAUDE.md` with a rule, not a hook:** Step 7 said `CLAUDE.md` is only
+  edited when you ask. A permission rule enforces that with one line. Lesson:
+  **use permission rules when they can do the job; use hooks for what rules can't**
+  (like adding context). Hooks are code — more power, more to go wrong.
+
+### Alternatives considered
+- **A formatter hook after every edit** (e.g. run Prettier). Very common, but
+  language-specific — belongs in each project, not the generic template.
+- **A `Stop` hook reminding to `/wrap-up`.** `Stop` fires after *every* reply, so
+  it would nag constantly.
+- **A `PreToolUse` hook to block dangerous commands.** Possible, but permission
+  `deny` rules cover the basics with less code.
+
+### Next
+Ideas: more skills, a `docs/decisions/` habit in the template, or
+language-specific variants.

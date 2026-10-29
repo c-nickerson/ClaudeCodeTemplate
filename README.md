@@ -14,7 +14,7 @@ ClaudeCodeTemplate/
 ├── README.md            # This file: what the project is and how it's organised
 ├── CLAUDE.md            # Rulebook for Claude in THIS repo (rarely edited)
 ├── .claude/
-│   ├── settings.json    # Claude Code permissions for THIS repo
+│   ├── settings.json    # Permissions + hooks for THIS repo
 │   ├── memory/
 │   │   └── PROJECT.md   # Living memory: goals, plan, progress (Claude updates it)
 │   └── skills/
@@ -25,7 +25,7 @@ ClaudeCodeTemplate/
 │   └── learning-log.md  # Step-by-step journal: WHAT we did and WHY
 └── template/            # The drop-in payload: copy its contents into a new project
     ├── .claude/
-    │   ├── settings.json  # Shared Claude Code settings: what Claude may/can't do
+    │   ├── settings.json  # Permissions (what Claude may/can't do) + hooks
     │   ├── memory/
     │   │   └── PROJECT.md # Fill-in memory: goals, plan, progress
     │   └── skills/

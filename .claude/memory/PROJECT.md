@@ -44,11 +44,11 @@ Status: ✅ done · 🔄 in progress · ⬜ not started
 - ✅ Step 6: Claude setup for this repo
 - ✅ Step 7: Split rules (`CLAUDE.md`) from memory (`.claude/memory/PROJECT.md`)
 - ✅ Step 8: `/wrap-up` command (as a skill)
-- ⬜ Hooks
+- ✅ Step 9: SessionStart hook (git snapshot) + ask before editing `CLAUDE.md`
 
 ## Current focus / Next up
 - Try `/wrap-up` at the end of a session.
-- Pick next: hooks, or more commands/skills.
+- Pick next step (ideas: more skills, a `docs/decisions/` habit, language variants).
 
 ## Decisions
 - `template/` holds the payload so learning docs never get copied.
@@ -56,6 +56,8 @@ Status: ✅ done · 🔄 in progress · ⬜ not started
 - No copy script — one `cp` command is enough.
 - `CLAUDE.md` is the stable rulebook; `PROJECT.md` is the living memory, loaded via `@` import.
 - Custom commands are skills (`.claude/skills/<name>/SKILL.md`), the current Claude Code format.
+- Use permission rules when they can do the job; use hooks only for what rules can't (e.g. adding context at session start).
+- Hook commands in the template are inline shell, not Node scripts, so new projects don't need Node.
 
 ## Open questions
 - None right now.
