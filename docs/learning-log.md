@@ -253,3 +253,39 @@ Added `template/.claude/settings.json` with three permission lists:
 ### Next
 A Node.js script, `scripts/new-project.mjs`, that copies `template/` into a new
 folder for you.
+
+---
+
+## Step 6 — Claude Code setup for this repo itself
+
+**Date:** 2026-10-29
+
+### What
+- Added `.claude/settings.json` at the repo root — same safe rules as the template
+  (allow read-only Git, ask before push, deny secret files).
+- Added a root `.gitignore` (ignores `.claude/settings.local.json`, OS clutter, `.env`).
+- Rewrote the root `CLAUDE.md`:
+  - explains the two sets of Claude files (this repo's vs. the template's),
+  - adds a numbered **"How a step works"** checklist,
+  - records that copying the template is done by hand, and scripts are only added
+    when asked.
+- Updated the `README.md` tree.
+
+### Why
+- **Practice what we preach:** the template gives new projects good Claude setup;
+  this repo deserved the same.
+- **Two sets of files can confuse Claude.** Saying plainly which `CLAUDE.md` and
+  `.claude/` belong to which project stops Claude editing the wrong one.
+- **The step checklist** turns our habits (log every step, one commit, ELI5 reply)
+  into a repeatable routine, so each session does it the same way without reminders.
+
+### Alternatives considered
+- **A copy script (`scripts/new-project.mjs`)** — the old "Next" from Step 5.
+  Dropped: `cp -r template/. new-project/` is one line, so a script adds little.
+- **A custom slash command** (e.g. `/step`) in `.claude/commands/` to run the
+  checklist. Useful, but the checklist in `CLAUDE.md` is enough for now. Could be
+  a later step.
+
+### Next
+Ideas: custom slash commands or skills (in both this repo and the template), or
+hooks (automatic actions on events).
