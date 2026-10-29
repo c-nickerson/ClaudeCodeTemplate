@@ -18,3 +18,7 @@ learning project: we go one small step at a time and document each one.
   `scripts/` at the repo root, not in `template/`.
 - Keep `README.md`'s layout tree in sync when adding or moving files.
 - Prefer small, explained changes over large ones — the goal is learning.
+
+## Talking to the user
+- Explain like I'm 5 (ELI5): short, plain words, no jargon.
+- Keep replies brief. Don't over-explain; the details go in the learning log.

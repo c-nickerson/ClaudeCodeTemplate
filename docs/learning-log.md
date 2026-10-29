@@ -123,3 +123,16 @@ Candidates for Step 3:
    `CLAUDE.md` already mentions `.env.example`).
 4. A Node.js `scripts/new-project.mjs` that copies `template/` into a target
    folder.
+
+---
+
+## Step 2.5 — Set how Claude talks to us
+
+**Date:** 2026-10-29
+
+### What
+Added a "Talking to the user" section to the root `CLAUDE.md`: ELI5, short replies.
+
+### Why
+Chat should be quick to read. The full reasoning lives here in the log instead.
+Putting it in `CLAUDE.md` means every future session follows it automatically.
